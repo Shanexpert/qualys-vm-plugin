@@ -2,7 +2,7 @@
 
 ## About
 
-The Qualys VM Jenkins plugin empowers DevOps teams to automate the VM scanning of host and cloud instance from Jenkins. By integrating scans in this manner, Host or Cloud instance security testing is accomplished to discover and eliminate security flaws.
+The Qualys VM Jenkins plugin empowers DevOps teams to automate the VM scanning of host and EC2 cloud instance from Jenkins. By integrating scans in this manner, Host or Cloud instance security testing is accomplished to discover and eliminate security flaws.
 
 ## How this plugin works
 
@@ -43,11 +43,13 @@ A form appears with several input fields. Now you are ready to configure the plu
 
 #### Pass/Fail Criteria
 
-1. Configure to fail build by Severity - if the number of detections exceeds the limit specified for one or more severity types in scan results. For example, to fail a build if severity 5 vulnerabilities count is more than 2, select the “Fail with more than severity 5” option and specify 2. 
+1. Configure to fail build by Severity -  if the number of detections exceeds the limit specified for one or more severity types in scan results, the build will fail. For example, if you set vulnerability severity to 2 then the build will fail if a vulnerability found in scan having severity equal to or greater than 2; that is 2,3,4 & 5.
 2. Configure to fail build by QIDs - if the configured QIDs found in the scan result.
 3. Configure to fail build by CVEs - if the configured CVEs found in the scan result.
-4. Configure to fail build by CVSS score - This can be either using CVSS v2 or CVSS v3.
+4. Configure to fail build by CVSS Base score - This can be either using CVSS v2 or CVSS v3.
 5. Configure to fail build by PCI Vulnerability Detections. Select the checkbox if you want to fail build if PCI Vulnerabilities are found.
+
+By default the pass/fail criteria is applied to Confirmed type of vulnerabilities. We can apply above fail conditions to potential vulnerabilities as well by configuring its checkbox.
 
 You can also exclude some conditions - You can configure a comma separated list of either CVEs or QIDs to exclude from the build failure conditions.
 
