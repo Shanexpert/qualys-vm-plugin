@@ -43,7 +43,7 @@ A form appears with several input fields. Now you are ready to configure the plu
 
 #### Pass/Fail Criteria
 
-1. Configure to fail build by Severity -  if the number of detections exceeds the limit specified for one or more severity types in scan results, the build will fail. For example, if you set vulnerability severity to 2 then the build will fail if a vulnerability found in scan having severity equal to or greater than 2; that is 2,3,4 & 5.
+1. Configure to fail build by Severity -  if any of the detections found, exceeds the limit specified for one or more severity types in scan results, the build will fail. For example, if you set vulnerability severity to 2 then the build will fail if a vulnerability found in scan having severity equal to or greater than 2; that is 2,3,4 & 5.
 2. Configure to fail build by QIDs - if the configured QIDs found in the scan result.
 3. Configure to fail build by CVEs - if the configured CVEs found in the scan result.
 4. Configure to fail build by CVSS Base score - This can be either using CVSS v2 or CVSS v3.
