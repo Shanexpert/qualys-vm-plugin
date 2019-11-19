@@ -11,7 +11,7 @@
   </parent>
   
   <groupId>com.qualys.plugins</groupId>
-  <artifactId>qualys-vm-scan</artifactId>
+  <artifactId>qualys-vm</artifactId>
   <version>1.0.1-beta</version>
   <packaging>hpi</packaging>
 
