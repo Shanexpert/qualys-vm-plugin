@@ -472,6 +472,7 @@ public class VMScanLauncher{
     	Map<String, String> returnMap = new HashMap<String, String>();		
     	//format name : [Job_Name]_jenkins_build_[build_number]_[timestamp]
     	EnvVars env = run.getEnvironment(listener);
+        String expHostIp = null;
     	String job_name = env.get("JOB_NAME");
     	String build_no = env.get("BUILD_NUMBER");
     	String timestamp = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());    	
@@ -497,7 +498,13 @@ public class VMScanLauncher{
     	} // End of scannerName if
     	
     	if (useHost) {
-    		if(hostIp != null && !hostIp.isEmpty()) {    			
+    		if(hostIp != null && !hostIp.isEmpty()) {
+                expHostIp = env.expand(hostIp);
+                if (expHostIp != null && !expHostIp.equals(hostIp)) {
+                    logger.info("hostIp expanded from " + hostIp + " to " + expHostIp + " ... ");
+                    buildLogger.println(new Timestamp(System.currentTimeMillis()) + " hostIp expanded from " + hostIp + " to " + expHostIp + " ... ");
+                    hostIp = expHostIp;
+                }    			
     			vmScan.addProperty("ip", hostIp);
         	}else {
         		throw new AbortException(new Timestamp(System.currentTimeMillis()) + " Host IP - Required parameter to launch scan is missing.");        		
